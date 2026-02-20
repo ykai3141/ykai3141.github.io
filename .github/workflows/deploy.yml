@@ -9,8 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        run: |
+          git clone --depth 1 https://github.com/ykai3141/ykai3141.github.io.git repo
+          cd repo
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Install Zola
         run: |
@@ -18,19 +22,15 @@ jobs:
           sudo mv zola /usr/local/bin/
 
       - name: Build
+        working-directory: ./repo
         run: zola build
 
-      - name: Setup Git
+      - name: Deploy to gh-pages
+        working-directory: ./repo
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Deploy
-        run: |
-          mkdir -p .deploy
-          cp -r public/* .deploy/
-          cd .deploy
-          git init
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r public/* .
           git add -A
-          git commit -m "Deploy to GitHub Pages"
+          git commit -m "Deploy to GitHub Pages" || true
           git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ykai3141/ykai3141.github.io.git HEAD:gh-pages
