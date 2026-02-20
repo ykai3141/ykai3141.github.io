@@ -2,9 +2,6 @@
 base_url = "https://ykai3141.github.io"
 title = "My Blog"
 
-# Theme to use (located in themes/)
-theme = "tanuki"
-
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
