@@ -1,7 +1,36 @@
 {% extends "base.html" %}
 
+{% block title %}{{ config.title }}{% endblock %}
+
 {% block content %}
-<h1 class="title">
-  This is my blog made with Zola.
-</h1>
-{% endblock content %}
+<div class="container">
+    <section class="hero">
+        <div class="content">
+            {% set section = get_section(path="_index.md") %}
+            {{ section.content | safe }}
+        </div>
+    </section>
+</div>
+
+{% set blog_section = get_section(path="blog/_index.md", required=false) %}
+{% if blog_section %}
+<div class="container">
+    <section>
+        <h2>Writing</h2>
+        <div class="posts">
+            {% for page in blog_section.pages | slice(end=10) %}
+            <div class="post">
+                <a href="{{ page.permalink }}">
+                    <div class="post-row">
+                        <time>{{ page.date | date(format="%Y-%m-%d") }}</time>
+                        <h3>{{ page.title }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="view-all-link" href="{{ get_url(path='@/blog/_index.md') }}">View all posts →</a>
+    </section>
+</div>
+{% endif %}
+{% endblock %}
