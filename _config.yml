@@ -1,7 +1,10 @@
 title: Kai's First Blog
 description: Welcome to my personal blog! Powered by GitHub Pages & Jekyll.
 
-theme: jekyll-theme-hacker  # Bold & premium look – strong headers, dark accents
+remote_theme: pages-themes/hacker@v0.2.0   # This is the reliable way for Hacker theme
+
+plugins:
+  - jekyll-remote-theme   # Required for remote themes
 
 url: "https://ykai3141.github.io"
 baseurl: ""
