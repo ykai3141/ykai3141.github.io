@@ -1,8 +1,7 @@
 title: Kai's First Blog
 description: Welcome to my personal blog! Powered by GitHub Pages & Jekyll.
 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-architect   # Bold & premium look – strong headers, dark accents
 
-# These are safe optional lines – they won't break anything
-url: "https://ykaii3141.github.io"
+url: "https://ykai3141.github.io"
 baseurl: ""
