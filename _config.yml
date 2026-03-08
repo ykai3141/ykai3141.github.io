@@ -1,0 +1,8 @@
+title: Kai's First Blog
+description: Welcome to my personal blog! Powered by GitHub Pages & Jekyll.
+
+theme: jekyll-theme-cayman  # Modern, clean upgrade – sidebar style, nice fonts & colors
+
+# Optional extras (uncomment to enable later):
+# show_downloads: true          # Adds download buttons if you have files/releases
+# google_analytics: UA-XXXXX-X  # Replace with your real tracking ID if you have one
